@@ -19,7 +19,7 @@ ELECTRONICS = "//h2[contains(text(), 'Электроника')]"
 SMATRPHONES = "//li[contains(text(), 'Смартфоны')]"
 PRODUCT_CARDS = "div.CardContentstyled__Container-sc-l636wt-0"
 SPECIFICATION = "h2.StyledSpoiler__Container-sc-1e51w0k-0"
-
+LOGIN = "//span[contains(text(), 'Войти')]"
 
 URL = "https://market.o.kg/ru"
 
@@ -57,7 +57,7 @@ def find_iphone_16(name):
     for item in items:
         if name in  item.text.lower() and 'Смартфоны' in  item.text:
             count += 1
-    if count > 0:
+    if count == len(items):
         return True
     else:
         return False
@@ -75,6 +75,8 @@ def verify_iphone_16():
         return False
 
 
+def login_func():
+    page.find_element(By.XPATH, LOGIN).click()
 
 
 
@@ -82,4 +84,6 @@ search_elements_by_name(NAME)
 print(find_iphone_16(NAME))
 find_iphone_16_and_click(NAME)
 print(verify_iphone_16())
+
+login_func()
 time.sleep(10)
