@@ -17,6 +17,8 @@ SEARCH_INPUT = "input[placeholder*='Поиск объявлений']"
 CATEGORY = "//h3[contains(text(), 'Категория')]"
 ELECTRONICS = "//h2[contains(text(), 'Электроника')]"
 SMATRPHONES = "//li[contains(text(), 'Смартфоны')]"
+PRODUCT_CARDS = "div.CardContentstyled__Container-sc-l636wt-0"
+SPECIFICATION = "h2.StyledSpoiler__Container-sc-1e51w0k-0"
 
 
 URL = "https://market.o.kg/ru"
@@ -35,7 +37,8 @@ page = PageObject(driver)
 
 driver.get(URL)
 
-name = "iphone 16"
+NAME = "iphone 16"
+
 
 def search_elements_by_name(name): 
     page.find_element(By.XPATH, CATEGORY).click()
@@ -46,5 +49,37 @@ def search_elements_by_name(name):
     page.fill_input(element, name)
 
 
-search_elements_by_name(name)
+def find_iphone_16(name):
+    count = 0
+    time.sleep(3)
+    #page = PageObject(driver)
+    items = page.find_elements(By.CSS_SELECTOR, PRODUCT_CARDS)
+    for item in items:
+        if name in  item.text.lower() and 'Смартфоны' in  item.text:
+            count += 1
+    if count > 0:
+        return True
+    else:
+        return False
+
+
+def find_iphone_16_and_click(name):
+    page.find_element(By.CSS_SELECTOR, PRODUCT_CARDS).click()
+
+
+def verify_iphone_16():
+    text = page.find_element(By.CSS_SELECTOR, SPECIFICATION).text
+    if "Характеристики" in text:
+        return True
+    else:
+        return False
+
+
+
+
+
+search_elements_by_name(NAME)
+print(find_iphone_16(NAME))
+find_iphone_16_and_click(NAME)
+print(verify_iphone_16())
 time.sleep(10)
