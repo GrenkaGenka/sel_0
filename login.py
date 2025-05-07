@@ -1,11 +1,12 @@
 import time
 from mailslurp_client import ApiClient, Configuration, InboxControllerApi, WaitForControllerApi
+import mailslurp_client
 
 # Простой пример создания временной почты с помощью MailSlurp
 
 def create_email_example():
     # 1. Настройка MailSlurp API
-    MAILSLURP_API_KEY = "YOUR_MAILSLURP_API_KEY_HERE"  # Замените на ваш API ключ
+    MAILSLURP_API_KEY = "f1d6106c5464c6751a87cbee9cdee5290403ce9874fa9e4c4d4e3cc501caa6a9"  # Замените на ваш API ключ
     
     config = Configuration()
     config.api_key['x-api-key'] = MAILSLURP_API_KEY
@@ -20,39 +21,18 @@ def create_email_example():
     inbox = inbox_controller.create_inbox()
     
     # 4. Получение данных почтового ящика
+
+    # e737762b-6b1a-45c8-900b-ab826e1208f0
+    #inbox_id = inbox.id
     inbox_id = inbox.id
+    #inbox_id = "e737762b-6b1a-45c8-900b-ab826e1208f0"
     email_address = inbox.email_address
     
     print(f"Создан почтовый ящик:")
     print(f"- ID: {inbox_id}")
     print(f"- Email адрес: {email_address}")
     
-    # 5. Ожидание входящего письма (опционально)
-    wait_for_emails = input("Хотите дождаться входящих писем? (да/нет): ").lower()
-    
-    if wait_for_emails == "да":
-        print(f"Ожидаем входящие письма для {email_address}...")
-        print("(Отправьте тестовое письмо на этот адрес)")
-        
-        # Ожидание до 30 секунд для получения письма
-        try:
-            emails = wait_controller.wait_for_latest_emails(
-                inbox_id=inbox_id,
-                count=1,
-                timeout=30000,  # 30 секунд
-                unread_only=True
-            )
-            
-            if emails and len(emails) > 0:
-                email = emails[0]
-                print("\nПолучено новое письмо:")
-                print(f"От: {email.from_}")
-                print(f"Тема: {email.subject}")
-                print(f"Содержание:\n{email.body}")
-            else:
-                print("Письма не получены в течение времени ожидания.")
-        except Exception as e:
-            print(f"Ошибка при ожидании писем: {e}")
+
     
     # 6. Получение списка писем (альтернативный подход)
     list_emails = input("Хотите проверить все письма в ящике? (да/нет): ").lower()
@@ -64,55 +44,24 @@ def create_email_example():
             print(f"\nВсего писем в ящике: {len(emails)}")
             for i, email in enumerate(emails):
                 print(f"\nПисьмо #{i+1}:")
-                print(f"От: {email.from_}")
+                #print(f"От: {email._from}")
                 print(f"Тема: {email.subject}")
                 print(f"Дата: {email.created_at}")
+                email_controller = mailslurp_client.EmailControllerApi(api_client)
+                email_content = email_controller.get_email(email.id)
+                text_content = email_content.body
+                
+                d=3
+                print(f"Содержание:\n{text_content}")
         else:
             print("В ящике нет писем.")
     
-    # 7. Удаление ящика (опционально)
-    delete_inbox = input("Хотите удалить созданный почтовый ящик? (да/нет): ").lower()
-    
-    if delete_inbox == "да":
-        inbox_controller.delete_inbox(inbox_id)
-        print(f"Почтовый ящик {email_address} удален.")
-    else:
-        print(f"Почтовый ящик {email_address} сохранен для дальнейшего использования.")
-        print("Обратите внимание, что временные ящики могут быть автоматически удалены через определенное время.")
-    
-    return {
-        "inbox_id": inbox_id,
-        "email_address": email_address
-    }
+   
 
-# Простая функция для отправки письма на указанный адрес
-def send_test_email(sender_inbox_id, recipient_email):
-    MAILSLURP_API_KEY = "YOUR_MAILSLURP_API_KEY_HERE"  # Замените на ваш API ключ
-    
-    config = Configuration()
-    config.api_key['x-api-key'] = MAILSLURP_API_KEY
-    api_client = ApiClient(config)
-    
-    inbox_controller = InboxControllerApi(api_client)
-    
-    from mailslurp_client import SendEmailOptions
-    
-    # Создаем опции для письма
-    send_options = SendEmailOptions(
-        to=[recipient_email],
-        subject="Тестовое письмо",
-        body="Это тестовое письмо отправлено с помощью MailSlurp API.\n\nПривет!",
-        from_=f"sender_{sender_inbox_id}@mailslurp.com",  # Это будет заменено на реальный адрес отправителя
-        is_html=False
-    )
-    
-    # Отправляем письмо
-    sent_email = inbox_controller.send_email(sender_inbox_id, send_options)
-    print(f"Письмо отправлено с ID: {sent_email.id}")
 
 # Функция для проверки всех писем в ящике
 def check_inbox(inbox_id):
-    MAILSLURP_API_KEY = "YOUR_MAILSLURP_API_KEY_HERE"  # Замените на ваш API ключ
+    MAILSLURP_API_KEY = "f1d6106c5464c6751a87cbee9cdee5290403ce9874fa9e4c4d4e3cc501caa6a9"  # Замените на ваш API ключ
     
     config = Configuration()
     config.api_key['x-api-key'] = MAILSLURP_API_KEY
@@ -120,9 +69,9 @@ def check_inbox(inbox_id):
     
     inbox_controller = InboxControllerApi(api_client)
     
-    # Получаем все письма
+    # Получаем все письма  e737762b-6b1a-45c8-900b-ab826e1208f0
     emails = inbox_controller.get_emails(inbox_id)
-    
+    #emails = inbox_controller.get_emails("e737762b-6b1a-45c8-900b-ab826e1208f0")
     print(f"Найдено {len(emails)} писем в ящике")
     
     for i, email in enumerate(emails):
@@ -132,9 +81,13 @@ def check_inbox(inbox_id):
         print(f"Тема: {email.subject}")
         print(f"Получено: {email.created_at}")
         
+
+        #emails = inbox_controller.get_emails(inbox_id)
         # Получить полное содержание письма
-        full_email = inbox_controller.get_email(email.id)
-        print(f"Содержание:\n{full_email.body}")
+        email_controller = mailslurp_client.EmailControllerApi(api_client)
+        email_content = email_controller.get_email(email.id)
+        text_content = email_content.body
+        print(f"Содержание:\n{text_content}")
 
 if __name__ == "__main__":
     # Исполняем пример создания почты
@@ -143,15 +96,14 @@ if __name__ == "__main__":
     # Дополнительные операции с созданным ящиком
     while True:
         print("\nДополнительные действия:")
-        print("1. Отправить тестовое письмо с этого ящика")
+        print("1. Создать почту")
         print("2. Проверить входящие письма")
         print("3. Выйти")
         
         choice = input("Выберите действие (1-3): ")
         
         if choice == "1":
-            recipient = input("Введите адрес получателя: ")
-            send_test_email(inbox_info["inbox_id"], recipient)
+            inbox_info = create_email_example()
         elif choice == "2":
             check_inbox(inbox_info["inbox_id"])
         elif choice == "3":
