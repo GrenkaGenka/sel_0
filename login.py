@@ -21,13 +21,8 @@ def create_email_example():
     inbox = inbox_controller.create_inbox()
     
     # 4. Получение данных почтового ящика
-
-    # e737762b-6b1a-45c8-900b-ab826e1208f0
-    #inbox_id = inbox.id
     inbox_id = inbox.id
-    #inbox_id = "e737762b-6b1a-45c8-900b-ab826e1208f0"
-    email_address = inbox.email_address
-    
+    email_address = inbox.email_address 
     print(f"Создан почтовый ящик:")
     print(f"- ID: {inbox_id}")
     print(f"- Email адрес: {email_address}")
