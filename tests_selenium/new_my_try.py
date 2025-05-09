@@ -23,8 +23,9 @@ PRODUCT_CARDS = "div.CardContentstyled__Container-sc-l636wt-0"
 SPECIFICATION = "h2.StyledSpoiler__Container-sc-1e51w0k-0"
 LOGIN = "//span[contains(text(), 'Войти')]"
 #LOGIN = "span.Navbarstyled__LoginButton-sc-8gmi3z-6 cdCtaH"
-FAVORITE = "button.styled__FavoriteIconWrapper-sc-w4o5jn-0.ccYUNJ"
-ENTER = "button[data-testid='auth-login-btn']"
+LOGIN_EMAIL = 'input[placeholder="E-mail"]'
+#FAVORITE = "button[data-testid='auth-login-email']"
+LOGIN_BUTTON = "button[data-testid='auth-login-btn']"
 
 URL = "https://market.o.kg/ru"
 
@@ -84,9 +85,9 @@ def login_func():
     client = MailSlurpClient()
     email_address = client.create_email()
     page.find_element(By.XPATH, LOGIN).click()
-    element = page.find_element(By.CSS_SELECTOR, FAVORITE)
+    element = page.find_element(By.CSS_SELECTOR, LOGIN_EMAIL)
     page.fill_input(element, email_address)
-    page.find_element(By.CSS_SELECTOR, ENTER).click()
+    page.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
     
     text_email = None
     while text_email is None:
@@ -101,9 +102,7 @@ def login_func():
     #a = stri_html  
 
 
-def add_to_favorite():
-    page.find_element(By.CSS_SELECTOR, FAVORITE).click()
-    
+#def add_to_favorite():
 
 
 
@@ -112,7 +111,6 @@ search_elements_by_name(NAME)
 print(find_iphone_16(NAME))
 find_iphone_16_and_click(NAME)
 print(verify_iphone_16())
-#add_to_favorite()
 
 
 time.sleep(10)
