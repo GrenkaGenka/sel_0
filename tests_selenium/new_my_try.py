@@ -22,20 +22,19 @@ SMATRPHONES = "//li[contains(text(), 'Смартфоны')]"
 PRODUCT_CARDS = "div.CardContentstyled__Container-sc-l636wt-0"
 SPECIFICATION = "h2.StyledSpoiler__Container-sc-1e51w0k-0"
 LOGIN = "//span[contains(text(), 'Войти')]"
-#LOGIN = "span.Navbarstyled__LoginButton-sc-8gmi3z-6 cdCtaH"
 LOGIN_EMAIL = 'input[placeholder="E-mail"]'
-#FAVORITE = "button[data-testid='auth-login-email']"
+ADD_FAVOURITE = "button.styled__FavoriteIconWrapper-sc-w4o5jn-0.ccYUNJ"
 LOGIN_BUTTON = "button[data-testid='auth-login-btn']"
+FAVOURITE = "div.styles__Link-sc-1q0auip-1.fngmIx"
 
 URL = "https://market.o.kg/ru"
+NAME = "iphone 16"
 
-# chrome_options = Options()
-#         # Раскомментируйте строку ниже для запуска в headless режиме
-# # chrome_options.add_argument("--headless")
-# chrome_options.add_argument("--no-sandbox")
-# chrome_options.add_argument("--disable-dev-shm-usage")
-# chrome_options.add_argument("--disable-notifications")
-# chrome_options.add_argument("--start-maximized")
+chrome_options = Options()
+chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--disable-notifications")
+chrome_options.add_argument("--start-maximized")
 
 driver = webdriver.Chrome()
 driver.implicitly_wait(5)
@@ -43,7 +42,7 @@ page = PageObject(driver)
 
 driver.get(URL)
 
-NAME = "iphone 16"
+
 
 
 def search_elements_by_name(name): 
@@ -58,7 +57,6 @@ def search_elements_by_name(name):
 def find_iphone_16(name):
     count = 0
     time.sleep(3)
-    #page = PageObject(driver)
     items = page.find_elements(By.CSS_SELECTOR, PRODUCT_CARDS)
     for item in items:
         if name in  item.text.lower() and 'Смартфоны' in  item.text:
@@ -99,10 +97,12 @@ def login_func():
     
     driver.get(stri_html)
     driver.get(URL)
-    #a = stri_html  
 
-
-#def add_to_favorite():
+def add_to_favourite():
+    page.find_element(By.CSS_SELECTOR, ADD_FAVOURITE).click()
+    time.sleep(2)
+    page.find_element(By.CSS_SELECTOR, FAVOURITE).click()
+    time.sleep(2)
 
 
 
@@ -111,6 +111,8 @@ search_elements_by_name(NAME)
 print(find_iphone_16(NAME))
 find_iphone_16_and_click(NAME)
 print(verify_iphone_16())
+add_to_favourite()
 
+print(find_iphone_16(NAME))
 
-time.sleep(10)
+time.sleep(20)
