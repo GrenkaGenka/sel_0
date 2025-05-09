@@ -7,7 +7,7 @@ class MailSlurpClient:
         self.config = Configuration()
         self.inbox_id = None
         #self.config.api_key['x-api-key'] = self.api_key
-        MAILSLURP_API_KEY = "f1d6106c5464c6751a87cbee9cdee5290403ce9874fa9e4c4d4e3cc501caa6a9"
+        MAILSLURP_API_KEY = "db9e51ddee1ee572b9972cbcf373a6999d88ad7e5f4739fd2a509ae7b29eda54"
         self.config = Configuration()
         self.config.api_key['x-api-key'] = MAILSLURP_API_KEY
         self.api_client = ApiClient(self.config)
