@@ -1,0 +1,29 @@
+2025-05-10 00:16:54,257 - INFO - Запускаем браузер. Открываем страницу https://market.o.kg/ru
+2025-05-10 00:16:54,259 - INFO - Создание нового временного почтового ящика...
+2025-05-10 00:16:55,416 - INFO - Создан почтовый ящик:
+2025-05-10 00:16:55,416 - INFO - - ID: d859ddc1-bf09-4ab9-aea2-3f1490beb0de
+2025-05-10 00:16:55,416 - INFO - - Email адрес: d859ddc1-bf09-4ab9-aea2-3f1490beb0de@mailslurp.biz
+2025-05-10 00:16:55,416 - ERROR - Тест завершился с ошибкой: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=136.0.7103.92)
+Stacktrace:
+	GetHandleVerifier [0x00007FF7878FCF25+75717]
+	GetHandleVerifier [0x00007FF7878FCF80+75808]
+	(No symbol) [0x00007FF7876C8F9A]
+	(No symbol) [0x00007FF7876A1B41]
+	(No symbol) [0x00007FF78774EC2E]
+	(No symbol) [0x00007FF78776ECC2]
+	(No symbol) [0x00007FF787747153]
+	(No symbol) [0x00007FF787710421]
+	(No symbol) [0x00007FF7877111B3]
+	GetHandleVerifier [0x00007FF787BFD6FD+3223453]
+	GetHandleVerifier [0x00007FF787BF7CA2+3200322]
+	GetHandleVerifier [0x00007FF787C15AD3+3322739]
+	GetHandleVerifier [0x00007FF7879169FA+180890]
+	GetHandleVerifier [0x00007FF78791E0FF+211359]
+	GetHandleVerifier [0x00007FF787905274+109332]
+	GetHandleVerifier [0x00007FF787905422+109762]
+	GetHandleVerifier [0x00007FF7878EBA39+4825]
+	BaseThreadInitThunk [0x00007FFA9E64E8D7+23]
+	RtlUserThreadStart [0x00007FFA9F7314FC+44]
+
