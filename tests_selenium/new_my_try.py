@@ -12,6 +12,8 @@ import logging
 from datetime import datetime
 from page_objects import PageObject
 
+from login_mail import MailSlurpClient
+
 
 SEARCH_INPUT = "input[placeholder*='Поиск объявлений']"
 CATEGORY = "//h3[contains(text(), 'Категория')]"
@@ -20,6 +22,9 @@ SMATRPHONES = "//li[contains(text(), 'Смартфоны')]"
 PRODUCT_CARDS = "div.CardContentstyled__Container-sc-l636wt-0"
 SPECIFICATION = "h2.StyledSpoiler__Container-sc-1e51w0k-0"
 LOGIN = "//span[contains(text(), 'Войти')]"
+#LOGIN = "span.Navbarstyled__LoginButton-sc-8gmi3z-6 cdCtaH"
+FAVORITE = "button.styled__FavoriteIconWrapper-sc-w4o5jn-0.ccYUNJ"
+ENTER = "button[data-testid='auth-login-btn']"
 
 URL = "https://market.o.kg/ru"
 
@@ -76,14 +81,38 @@ def verify_iphone_16():
 
 
 def login_func():
+    client = MailSlurpClient()
+    email_address = client.create_email()
     page.find_element(By.XPATH, LOGIN).click()
+    element = page.find_element(By.CSS_SELECTOR, FAVORITE)
+    page.fill_input(element, email_address)
+    page.find_element(By.CSS_SELECTOR, ENTER).click()
+    
+    text_email = None
+    while text_email is None:
+        time.sleep(10)
+        text_email = client.check_inbox()
+    string_start = text_email.find("href=")
+    string_end = text_email.find(';action=')
+    stri_html = text_email[string_start+6:string_end+8]
+    
+    driver.get(stri_html)
+    driver.get(URL)
+    #a = stri_html  
+
+
+def add_to_favorite():
+    page.find_element(By.CSS_SELECTOR, FAVORITE).click()
+    
 
 
 
+login_func()
 search_elements_by_name(NAME)
 print(find_iphone_16(NAME))
 find_iphone_16_and_click(NAME)
 print(verify_iphone_16())
+#add_to_favorite()
 
-login_func()
+
 time.sleep(10)
