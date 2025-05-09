@@ -1,98 +1,69 @@
-2025-05-02 22:53:18,142 - INFO - === Начало теста ===
-2025-05-02 22:53:21,484 - INFO - Шаг 1: Перейти на сайт и найти все модели iPhone 16
-2025-05-02 22:53:21,484 - INFO - Открываем страницу https://market.o.kg/ru
-2025-05-02 22:53:21,824 - INFO - Выполняем поиск: 'iphone 16'
-2025-05-02 22:53:26,246 - INFO - Ожидаем загрузку результатов поиска...
-2025-05-02 22:53:29,257 - INFO - Шаг 2: Проверить, что каждая найденная модель отображается на странице
-2025-05-02 22:53:32,899 - ERROR - Тест завершился с ошибкой: ('Connection aborted.', ConnectionResetError(10054, 'Удаленный хост принудительно разорвал существующее подключение', None, 10054, None))
-2025-05-02 22:53:37,025 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002015AD121F0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/3e73f168ef4132aff10863a33fa36cdc/screenshot
-2025-05-02 22:53:41,088 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002015AD122E0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/3e73f168ef4132aff10863a33fa36cdc/screenshot
-2025-05-02 22:53:45,172 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002015AD12460>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/3e73f168ef4132aff10863a33fa36cdc/screenshot
-2025-05-02 22:53:53,337 - WARNING - Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002015AD127C0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/3e73f168ef4132aff10863a33fa36cdc
-2025-05-02 22:53:57,399 - WARNING - Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002015AD12970>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/3e73f168ef4132aff10863a33fa36cdc
-2025-05-02 22:54:01,484 - WARNING - Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002015AD12AF0>: Failed to establish a new connection: [WinError 10061] Подключение не установлено, т.к. конечный компьютер отверг запрос на подключение')': /session/3e73f168ef4132aff10863a33fa36cdc
-2025-05-02 22:54:05,589 - INFO - === Конец теста ===
-2025-05-02 22:58:27,143 - INFO - === Начало теста ===
-2025-05-02 22:58:28,603 - INFO - Шаг 1: Перейти на сайт и найти все модели iPhone 16
-2025-05-02 22:58:28,604 - INFO - Открываем страницу https://market.o.kg/ru
-2025-05-02 22:58:33,264 - INFO - Выполняем поиск: 'iphone 16'
-2025-05-02 22:58:33,579 - INFO - Ожидаем загрузку результатов поиска...
-2025-05-02 22:58:36,588 - INFO - Шаг 2: Проверить, что каждая найденная модель отображается на странице
-2025-05-02 22:59:19,997 - ERROR - Тест завершился с ошибкой: Message: invalid session id: session deleted as the browser has closed the connection
-from disconnected: Unable to receive message from renderer
-  (Session info: chrome=136.0.7103.49)
+2025-05-10 00:03:15,536 - INFO - Запускаем браузер. Открываем страницу https://market.o.kg/ru
+2025-05-10 00:03:15,539 - INFO - Создание нового временного почтового ящика...
+2025-05-10 00:03:16,623 - INFO - Создан почтовый ящик:
+2025-05-10 00:03:16,627 - INFO - - ID: e21be25b-95a2-4733-978a-fae70a57ea1a
+2025-05-10 00:03:16,627 - INFO - - Email адрес: e21be25b-95a2-4733-978a-fae70a57ea1a@mailslurp.biz
+2025-05-10 00:03:16,796 - INFO - Кликаем на кнопку 'Войти'
+2025-05-10 00:03:17,197 - INFO - Заполняем поле 'E-mail' 'e21be25b-95a2-4733-978a-fae70a57ea1a@mailslurp.biz'
+2025-05-10 00:03:17,310 - INFO - Кликаем на кнопку 'Войти'
+2025-05-10 00:03:17,310 - INFO - Ожидаем получение письма на почту 'e21be25b-95a2-4733-978a-fae70a57ea1a@mailslurp.biz'
+2025-05-10 00:03:27,863 - INFO - Письмо получено
+2025-05-10 00:03:27,863 - INFO - Получаем ссылку для входа 'https://market.o.kg/ru?token=eyd0b2tlbic6ICcyNTkzNTAyNmM3Yjg0N2UwYmRkNWRiNDBlMTBmNjFhZicsICdlbWFpbCc6ICdlMjFiZTI1Yi05NWEyLTQ3MzMtOTc4YS1mYWU3MGE1N2VhMWFAbWFpbHNsdXJwLmJpeid9&amp;action='
+2025-05-10 00:03:30,106 - INFO - Переходим на главную страницу 'https://market.o.kg/ru'
+2025-05-10 00:03:30,485 - INFO - Нажимаем на категорию 'Категория'
+2025-05-10 00:03:30,881 - INFO - Нажимаем на категорию 'Электроника'
+2025-05-10 00:03:31,183 - INFO - Нажимаем на категорию 'Смартфоны'
+2025-05-10 00:03:31,451 - INFO - Заполняем поле поиска 'iphone 16'
+2025-05-10 00:03:31,451 - INFO - Проверяем наличие товара 'iphone 16' в результатах поиска
+2025-05-10 00:03:34,813 - INFO - Кликаем на первый товар 'iphone 16'
+2025-05-10 00:03:34,813 - INFO - Проверяем наличие характеристик товара
+2025-05-10 00:03:35,576 - INFO - Кликаем на кнопку 'Добавить в избранное'
+2025-05-10 00:03:40,637 - ERROR - Тест завершился с ошибкой: Message: no such element: Unable to locate element: {"method":"css selector","selector":"div.styles__Link-sc-1q0auip-1.fngmIx"}
+  (Session info: chrome=136.0.7103.92); For documentation on this error, please visit: https://www.selenium.dev/documentation/webdriver/troubleshooting/errors#no-such-element-exception
 Stacktrace:
-	GetHandleVerifier [0x00007FF60BCEA145+76773]
-	GetHandleVerifier [0x00007FF60BCEA1A0+76864]
-	(No symbol) [0x00007FF60BAA8F7A]
-	(No symbol) [0x00007FF60BA964AC]
-	(No symbol) [0x00007FF60BA9619A]
-	(No symbol) [0x00007FF60BA93E47]
-	(No symbol) [0x00007FF60BA947FF]
-	(No symbol) [0x00007FF60BAAE4D1]
-	(No symbol) [0x00007FF60BAAEFC7]
-	(No symbol) [0x00007FF60BAB39EC]
-	(No symbol) [0x00007FF60BAB3ABF]
-	(No symbol) [0x00007FF60BAFED47]
-	(No symbol) [0x00007FF60BAFF74C]
-	(No symbol) [0x00007FF60BB522B7]
-	(No symbol) [0x00007FF60BB2739F]
-	(No symbol) [0x00007FF60BB4F0CF]
-	(No symbol) [0x00007FF60BB27133]
-	(No symbol) [0x00007FF60BAF04D1]
-	(No symbol) [0x00007FF60BAF1263]
-	GetHandleVerifier [0x00007FF60BFAA8ED+2962317]
-	GetHandleVerifier [0x00007FF60BFA4EC2+2939234]
-	GetHandleVerifier [0x00007FF60BFC2FF3+3062419]
-	GetHandleVerifier [0x00007FF60BD04B9A+185914]
-	GetHandleVerifier [0x00007FF60BD0C78F+217647]
-	GetHandleVerifier [0x00007FF60BCF2A44+111844]
-	GetHandleVerifier [0x00007FF60BCF2BF2+112274]
-	GetHandleVerifier [0x00007FF60BCD8A79+5401]
+	GetHandleVerifier [0x00007FF7878FCF25+75717]
+	GetHandleVerifier [0x00007FF7878FCF80+75808]
+	(No symbol) [0x00007FF7876C8F9A]
+	(No symbol) [0x00007FF78771F4C6]
+	(No symbol) [0x00007FF78771F77C]
+	(No symbol) [0x00007FF787772577]
+	(No symbol) [0x00007FF7877473BF]
+	(No symbol) [0x00007FF78776F39C]
+	(No symbol) [0x00007FF787747153]
+	(No symbol) [0x00007FF787710421]
+	(No symbol) [0x00007FF7877111B3]
+	GetHandleVerifier [0x00007FF787BFD6FD+3223453]
+	GetHandleVerifier [0x00007FF787BF7CA2+3200322]
+	GetHandleVerifier [0x00007FF787C15AD3+3322739]
+	GetHandleVerifier [0x00007FF7879169FA+180890]
+	GetHandleVerifier [0x00007FF78791E0FF+211359]
+	GetHandleVerifier [0x00007FF787905274+109332]
+	GetHandleVerifier [0x00007FF787905422+109762]
+	GetHandleVerifier [0x00007FF7878EBA39+4825]
 	BaseThreadInitThunk [0x00007FFA9E64E8D7+23]
 	RtlUserThreadStart [0x00007FFA9F7314FC+44]
 
-2025-05-02 22:59:22,122 - INFO - === Конец теста ===
-2025-05-04 21:39:41,688 - INFO - === Начало теста ===
-2025-05-04 21:39:45,380 - INFO - Шаг 1: Перейти на сайт и найти все модели iPhone 16
-2025-05-04 21:39:45,380 - INFO - Открываем страницу https://market.o.kg/ru
-2025-05-04 21:39:48,776 - INFO - Выполняем поиск: 'iphone 16'
-2025-05-04 21:39:49,005 - INFO - Ожидаем загрузку результатов поиска...
-2025-05-04 21:39:52,015 - INFO - Шаг 2: Проверить, что каждая найденная модель отображается на странице
-2025-05-04 21:42:03,629 - INFO - Найдено товаров: 10
-2025-05-04 21:45:26,515 - INFO - === Начало теста ===
-2025-05-04 21:45:27,841 - INFO - Шаг 1: Перейти на сайт и найти все модели iPhone 16
-2025-05-04 21:45:27,843 - INFO - Открываем страницу https://market.o.kg/ru
-2025-05-04 21:45:31,006 - INFO - Выполняем поиск: 'iphone 16'
-2025-05-04 21:45:31,277 - INFO - Ожидаем загрузку результатов поиска...
-2025-05-04 21:45:34,286 - INFO - Шаг 2: Проверить, что каждая найденная модель отображается на странице
-2025-05-04 21:45:34,320 - INFO - Найдено товаров: 10
-2025-05-04 21:58:42,716 - INFO - === Начало теста ===
-2025-05-04 21:58:44,064 - INFO - Шаг 1: Перейти на сайт и найти все модели iPhone 16
-2025-05-04 21:58:44,064 - INFO - Открываем страницу https://market.o.kg/ru
-2025-05-04 21:58:47,200 - INFO - Выполняем поиск: 'iphone 16'
-2025-05-04 21:58:47,390 - INFO - Ожидаем загрузку результатов поиска...
-2025-05-04 21:58:50,396 - INFO - Шаг 2: Проверить, что каждая найденная модель отображается на странице
-2025-05-04 22:01:50,854 - INFO - Найдено товаров: 10
-2025-05-04 22:05:24,440 - INFO - === Начало теста ===
-2025-05-04 22:05:25,785 - INFO - Шаг 1: Перейти на сайт и найти все модели iPhone 16
-2025-05-04 22:05:25,787 - INFO - Открываем страницу https://market.o.kg/ru
-2025-05-04 22:05:29,499 - INFO - Выполняем поиск: 'iphone 16'
-2025-05-04 22:05:29,711 - INFO - Ожидаем загрузку результатов поиска...
-2025-05-04 22:05:32,724 - INFO - Шаг 2: Проверить, что каждая найденная модель отображается на странице
-2025-05-04 22:05:49,815 - INFO - Найдено товаров: 10
-2025-05-05 22:00:16,558 - INFO - === Начало теста ===
-2025-05-05 22:00:24,113 - INFO - Шаг 1: Перейти на сайт и найти все модели iPhone 16
-2025-05-05 22:00:24,114 - INFO - Открываем страницу https://market.o.kg/ru
-2025-05-05 22:00:27,880 - INFO - Выполняем поиск: 'iphone 16'
-2025-05-05 22:00:28,146 - INFO - Ожидаем загрузку результатов поиска...
-2025-05-05 22:00:31,150 - INFO - Шаг 2: Проверить, что каждая найденная модель отображается на странице
-2025-05-05 22:00:31,175 - INFO - Найдено товаров: 10
-2025-05-05 22:00:43,803 - INFO - === Начало теста ===
-2025-05-05 22:00:49,293 - INFO - Шаг 1: Перейти на сайт и найти все модели iPhone 16
-2025-05-05 22:01:06,458 - INFO - Открываем страницу https://market.o.kg/ru
-2025-05-05 22:01:59,646 - INFO - Выполняем поиск: 'iphone 16'
-2025-05-05 22:09:21,542 - INFO - === Начало теста ===
-2025-05-05 22:09:26,240 - INFO - Шаг 1: Перейти на сайт и найти все модели iPhone 16
-2025-05-05 22:09:26,240 - INFO - Открываем страницу https://market.o.kg/ru
-2025-05-05 22:09:29,808 - INFO - Выполняем поиск: 'iphone 16'
+2025-05-10 00:03:40,879 - INFO - Скриншот сохранен как error_20250510_000340.png
+2025-05-10 00:05:30,118 - INFO - Запускаем браузер. Открываем страницу https://market.o.kg/ru
+2025-05-10 00:05:30,131 - INFO - Создание нового временного почтового ящика...
+2025-05-10 00:05:31,488 - INFO - Создан почтовый ящик:
+2025-05-10 00:05:31,490 - INFO - - ID: 20c16ec0-d554-4f87-b25b-16466041853a
+2025-05-10 00:05:31,490 - INFO - - Email адрес: 20c16ec0-d554-4f87-b25b-16466041853a@mailslurp.biz
+2025-05-10 00:05:35,357 - INFO - Кликаем на кнопку 'Войти'
+2025-05-10 00:05:35,884 - INFO - Заполняем поле 'E-mail' '20c16ec0-d554-4f87-b25b-16466041853a@mailslurp.biz'
+2025-05-10 00:05:36,094 - INFO - Кликаем на кнопку 'Войти'
+2025-05-10 00:05:36,097 - INFO - Ожидаем получение письма на почту '20c16ec0-d554-4f87-b25b-16466041853a@mailslurp.biz'
+2025-05-10 00:05:46,811 - INFO - Письмо получено
+2025-05-10 00:05:46,819 - INFO - Получаем ссылку для входа 'https://market.o.kg/ru?token=eyd0b2tlbic6ICczODI4MWU1NTdjNGY0YzlmYmRjMjE1MTcxZjg2MzIzYicsICdlbWFpbCc6ICcyMGMxNmVjMC1kNTU0LTRmODctYjI1Yi0xNjQ2NjA0MTg1M2FAbWFpbHNsdXJwLmJpeid9&amp;action='
+2025-05-10 00:05:50,247 - INFO - Переходим на главную страницу 'https://market.o.kg/ru'
+2025-05-10 00:05:50,616 - INFO - Нажимаем на категорию 'Категория'
+2025-05-10 00:05:50,988 - INFO - Нажимаем на категорию 'Электроника'
+2025-05-10 00:05:51,279 - INFO - Нажимаем на категорию 'Смартфоны'
+2025-05-10 00:05:51,453 - INFO - Заполняем поле поиска 'iphone 16'
+2025-05-10 00:05:51,453 - INFO - Проверяем наличие товара 'iphone 16' в результатах поиска
+2025-05-10 00:05:54,717 - INFO - Кликаем на первый товар 'iphone 16'
+2025-05-10 00:05:54,717 - INFO - Проверяем наличие характеристик товара
+2025-05-10 00:05:55,804 - INFO - Кликаем на кнопку 'Добавить в избранное'
+2025-05-10 00:05:56,003 - INFO - Кликаем на кнопку 'Избранное'
+2025-05-10 00:05:56,003 - INFO - Проверяем наличие товара 'iphone 16' в результатах поиска
+2025-05-10 00:05:59,020 - INFO - Тест успешно выполнен!

@@ -1,3 +1,15 @@
+import logging
+from datetime import datetime
+
+
+logging.basicConfig(level=logging.INFO, 
+                    format='%(asctime)s - %(levelname)s - %(message)s',
+                    handlers=[
+                        logging.FileHandler("market_kg_test.log"),
+                        logging.StreamHandler()
+                    ])
+logger = logging.getLogger(__name__)
+
 class PageObject:
     def __init__(self, driver):
         self.driver = driver
@@ -14,3 +26,10 @@ class PageObject:
     def fill_input(self, element, value):
         element.clear()
         element.send_keys(value)
+
+    def take_screenshot(self, name=None):
+        """Сделать скриншот текущей страницы"""
+        if name is None:
+            name = f"screenshot_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
+        self.driver.save_screenshot(name)
+        logger.info(f"Скриншот сохранен как {name}")
