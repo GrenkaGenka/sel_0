@@ -49,7 +49,7 @@ class MarketOKGSTest(unittest.TestCase):
                             "Не удалось найти iPhone 16 на странице товара")
 
             self.objects.add_to_favourite()
-            self.assertTrue(self.objects.find_iphone_16(NAME), 
+            self.assertTrue(self.objects.find_iphone_16(NAME),
                             "Не удалось найти iPhone 16 в избранном")
 
             logger.info("Тест успешно выполнен!")

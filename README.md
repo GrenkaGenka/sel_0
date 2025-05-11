@@ -2,12 +2,12 @@
 
 ### Использованные технологии:
 
-В проекте использованы Python, selenium, unittest, mailslurp_client
+В проекте использованы Python, selenium, unittest, mailslurp
 
 ### Как работать с mailslurp:
 
 На сайте https://app.mailslurp.com зарегестрироваться и получить токен для почты.
-В файле login_mail.py в переменной MAILSLURP_API_KEY сохранить свой токен.
+В файле login_mail.py в переменной MAILSLURP_API_KEY сохранить свой токен. Для быстрой проверки можно использовать тот что указан в файле, но со временем он блокируется.
 
 ### Как запустить проект:
 
@@ -16,14 +16,14 @@
 Cоздать и активировать виртуальное окружение:
 
 ```
-python3.9 -m venv venv
-source venv/bin/activate
+python -m venv venv
+source venv/Scripts/activate
 ```
 
 Установить зависимости из файла requirements.txt:
 
 ```
-python3 -m pip install --upgrade pip
+python -m pip install --upgrade pip
 pip install -r requirements.txt
 ```
 
@@ -31,5 +31,4 @@ pip install -r requirements.txt
 
 ```
 python test_unitest.py
-python3 test_unitest.py
 ```

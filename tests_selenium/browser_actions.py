@@ -1,6 +1,8 @@
 import time
 import logging
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 from login_mail import MailSlurpClient
 
@@ -35,14 +37,23 @@ class BrowserActions:
         self.page = page
 
 
-    def search_elements_by_name(self, name): 
-        self.page.find_element(By.XPATH, CATEGORY).click()
+    def search_elements_by_name(self, name):
+        element = WebDriverWait(self.page, 10).until(
+            EC.element_to_be_clickable((By.XPATH, CATEGORY))
+        )
+        element.click()
         logger.info(f"Нажимаем на категорию 'Категория'")
-        self.page.find_element(By.XPATH, ELECTRONICS).click()
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, ELECTRONICS)))
+        element.click()
         logger.info(f"Нажимаем на категорию 'Электроника'")
-        self.page.find_element(By.XPATH, SMATRPHONES).click()
+        element = WebDriverWait(self.driver, 10).until(
+           EC.element_to_be_clickable((By.XPATH, SMATRPHONES)))
+        element.click()
         logger.info(f"Нажимаем на категорию 'Смартфоны'")
-        element = self.page.find_element(By.CSS_SELECTOR, SEARCH_INPUT)
+        element = WebDriverWait(self.driver, 10).until(
+           EC.element_to_be_clickable((By.CSS_SELECTOR, SEARCH_INPUT)))
+        element.click()
         self.page.fill_input(element, name)
         logger.info(f"Заполняем поле поиска '{name}'")
 
@@ -51,7 +62,10 @@ class BrowserActions:
         logger.info(f"Проверяем наличие товара '{name}' в результатах поиска")
         count = 0
         time.sleep(3)
-        items = self.page.find_elements(By.CSS_SELECTOR, PRODUCT_CARDS)
+        items = WebDriverWait(self.page, 10).until(
+            EC.presence_of_all_elements_located((
+                By.CSS_SELECTOR, PRODUCT_CARDS))
+            )
         for item in items:
             if name in  item.text.lower() and 'Смартфоны' in  item.text:
                 count += 1
@@ -62,7 +76,9 @@ class BrowserActions:
 
 
     def find_iphone_16_and_click(self, name):
-        self.page.find_element(By.CSS_SELECTOR, PRODUCT_CARDS).click()
+        element = WebDriverWait(self.driver, 10).until(
+           EC.element_to_be_clickable((By.CSS_SELECTOR, PRODUCT_CARDS)))
+        element.click()
         logger.info(f"Кликаем на первый товар '{name}'")
 
 
@@ -78,12 +94,17 @@ class BrowserActions:
     def login_func(self):
         client = MailSlurpClient()
         email_address = client.create_email()
-        self.page.find_element(By.XPATH, LOGIN).click()
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.XPATH, LOGIN)))
+        element.click()
         logger.info(f"Кликаем на кнопку 'Войти'")
-        element = self.page.find_element(By.CSS_SELECTOR, LOGIN_EMAIL)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, LOGIN_EMAIL)))
         self.page.fill_input(element, email_address)
         logger.info(f"Заполняем поле 'E-mail' '{email_address}'")
-        self.page.find_element(By.CSS_SELECTOR, LOGIN_BUTTON).click()
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, LOGIN_BUTTON)))
+        element.click()
         logger.info(f"Кликаем на кнопку 'Войти'")
         text_email = None
         while text_email is None:
@@ -99,9 +120,11 @@ class BrowserActions:
         logger.info(f"Переходим на главную страницу '{URL}'")
 
     def add_to_favourite(self):
-        self.page.find_element(By.CSS_SELECTOR, ADD_FAVOURITE).click()
-        time.sleep(3)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, ADD_FAVOURITE)))
+        element.click()
         logger.info(f"Кликаем на кнопку 'Добавить в избранное'")
-        self.page.find_element(By.CSS_SELECTOR, FAVOURITE).click()
-        time.sleep(3)
+        element = WebDriverWait(self.driver, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, FAVOURITE)))
+        element.click()
         logger.info(f"Кликаем на кнопку 'Избранное'")
