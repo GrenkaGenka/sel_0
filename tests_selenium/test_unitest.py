@@ -22,15 +22,20 @@ logger = logging.getLogger(__name__)
 
 
 class MarketOKGSTest(unittest.TestCase):
+    """Класс осуществляет тестирование сайта market.o.kg"""
 
     def setUp(self):
 
         chrome_options = Options()
+        chrome_options.add_argument("--use-fake-ui-for-media-stream")
+        chrome_options.add_argument("--use-fake-device-for-media-stream")
+        chrome_options.add_experimental_option("prefs", {
+    "profile.default_content_setting_values.geolocation": 2,})
         chrome_options.add_argument("--no-sandbox")
         chrome_options.add_argument("--disable-dev-shm-usage")
         chrome_options.add_argument("--disable-notifications")
         chrome_options.add_argument("--start-maximized")
-        driver = webdriver.Chrome()
+        driver = webdriver.Chrome(options=chrome_options)
         driver.implicitly_wait(5)
         self.page = PageObject(driver)
         driver.get(URL)
@@ -38,6 +43,7 @@ class MarketOKGSTest(unittest.TestCase):
         logger.info(f"Запускаем браузер. Открываем страницу {URL}")
 
     def test_iphone_16_search_and_favorite(self):
+        """Тест проверяет возможность поиска, проверки и добавления iPhone 16 в избранное"""
         try:
             self.objects.login_func()
             self.objects.search_elements_by_name(NAME)

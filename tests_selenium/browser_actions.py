@@ -31,6 +31,7 @@ logger = logging.getLogger(__name__)
 
 
 class BrowserActions:
+    """Класс осуществляет действия с браузером"""
 
     def __init__(self, driver, page):
         self.driver = driver
@@ -38,6 +39,8 @@ class BrowserActions:
 
 
     def search_elements_by_name(self, name):
+        """Метод осуществляет поиск товара по имени"""
+
         element = WebDriverWait(self.page, 10).until(
             EC.element_to_be_clickable((By.XPATH, CATEGORY))
         )
@@ -59,6 +62,8 @@ class BrowserActions:
 
 
     def find_iphone_16(self, name):
+        """Метод проверяет наличие товара в результатах поиска"""
+
         logger.info(f"Проверяем наличие товара '{name}' в результатах поиска")
         count = 0
         time.sleep(3)
@@ -76,6 +81,8 @@ class BrowserActions:
 
 
     def find_iphone_16_and_click(self, name):
+        """Метод кликает на первый товар из результатов поиска"""
+
         element = WebDriverWait(self.driver, 10).until(
            EC.element_to_be_clickable((By.CSS_SELECTOR, PRODUCT_CARDS)))
         element.click()
@@ -83,6 +90,8 @@ class BrowserActions:
 
 
     def verify_iphone_16(self):
+        """Метод проверяет наличие характеристик товара на странице товара"""
+
         logger.info(f"Проверяем наличие характеристик товара")
         text = self.page.find_element(By.CSS_SELECTOR, SPECIFICATION).text
         if "Характеристики" in text:
@@ -92,6 +101,8 @@ class BrowserActions:
 
 
     def login_func(self):
+        """Метод осуществляет вход на сайт и получение входящих писем"""
+
         client = MailSlurpClient()
         email_address = client.create_email()
         element = WebDriverWait(self.driver, 10).until(
@@ -120,6 +131,8 @@ class BrowserActions:
         logger.info(f"Переходим на главную страницу '{URL}'")
 
     def add_to_favourite(self):
+        """Метод добавляет товар в избранное"""
+        
         element = WebDriverWait(self.driver, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, ADD_FAVOURITE)))
         element.click()
