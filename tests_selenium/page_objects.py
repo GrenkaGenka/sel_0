@@ -11,6 +11,7 @@ logging.basicConfig(level=logging.INFO,
 logger = logging.getLogger(__name__)
 
 class PageObject:
+    """Класс осуществляет действия с браузером"""
     def __init__(self, driver):
         self.driver = driver
 
@@ -28,7 +29,6 @@ class PageObject:
         element.send_keys(value)
 
     def take_screenshot(self, name=None):
-        """Сделать скриншот текущей страницы"""
         if name is None:
             name = f"screenshot_{datetime.now().strftime('%Y%m%d_%H%M%S')}.png"
         self.driver.save_screenshot(name)

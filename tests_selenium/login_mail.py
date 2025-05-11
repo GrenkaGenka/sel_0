@@ -16,6 +16,8 @@ logger = logging.getLogger(__name__)
 
 
 class MailSlurpClient:
+    """Класс для работы с MailSlurp API"""
+
     def __init__(self):
         self.config = Configuration()
         self.inbox_id = None
@@ -26,6 +28,7 @@ class MailSlurpClient:
         self.wait_controller = WaitForControllerApi(self.api_client)
 
     def create_email(self):
+        """Создает временный почтовый ящик и возвращает его адрес электронной почты"""
         try:
             logger.info("Создание нового временного почтового ящика...")
             inbox = self.inbox_controller.create_inbox()
@@ -40,6 +43,7 @@ class MailSlurpClient:
             return None
 
     def check_inbox(self):
+        """Проверяет наличие писем в почтовом ящике"""
         try:
             emails = self.inbox_controller.get_emails(self.inbox_id)
         
