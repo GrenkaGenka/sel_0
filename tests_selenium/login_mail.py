@@ -3,7 +3,7 @@ import mailslurp_client
 from mailslurp_client import ApiClient, Configuration, InboxControllerApi, WaitForControllerApi
 
 # Замените на свой API-ключ MailSlurp
-MAILSLURP_API_KEY = "db9e51ddee1ee572b9972cbcf373a6999d88ad7e5f4739fd2a509ae7b29eda54"
+MAILSLURP_API_KEY = "f493f0ce89a668a6b6d9a4347e9d99ab705be5f96e8cf4cd04c3a818f37cc011"
 
 
 logging.basicConfig(level=logging.INFO,
